@@ -1,0 +1,191 @@
+    * {
+        box-sizing: border-box;
+        margin: o auto;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    #header {
+        height: 100px;
+        display: flex;
+        justify-content: space-between;
+        padding-left: 10px;
+        align-items: center;
+        background-color: rgb(220, 222, 223);
+    }
+
+    .nav_bar ul {
+        display: flex;
+    }
+
+    .nav_bar ul li a {
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        border-radius: 10px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+
+    .user_right ul {
+        display: flex;
+        gap: 20px;
+    }
+
+    .user_right ul li a {
+        display: inline-block;
+        width: 120px;
+        text-align: center;
+        border-radius: 10px;
+        line-height: 40px;
+        font-size: 20px;
+    }
+
+    .user_right ul li {
+        position: relative;
+    }
+
+
+    .user_bar {
+        position: absolute;
+        display: flex;
+        top: 60px;
+        right: 10px;
+        flex-direction: column;
+        visibility: hidden;
+        background-color: aliceblue;
+        /* border: 1px solid black; */
+    }
+
+
+    /* .user_right ul li:hover .user_bar {
+        visibility: visible;
+    } */
+
+    .group_1 h1,
+    .group_1 p {
+        text-align: center;
+    }
+
+    .text_content {
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .toggle_cataloge {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .toggle_cataloge h4 {
+        display: block;
+        width: 220px;
+        text-align: center;
+        font-size: 30px;
+        border-radius: 20px;
+        background-color: ghostwhite;
+    }
+
+    .listbook {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .bookdetail {
+        position: relative;
+        border: 1px solid gray;
+        width: 360px;
+        margin-bottom: 20px;
+    }
+
+    .bookdetail img {
+        text-align: center;
+        width: 100%;
+    }
+
+    .bookprice p,
+    .bookprice h2 {
+        text-align: left;
+        padding-left: 10px;
+    }
+
+    .favorite_cart {
+        position: absolute;
+        display: flex;
+        top: 5px;
+        left: 15px;
+        justify-content: space-between;
+        gap: 100px;
+        visibility: hidden;
+        color: blue;
+    }
+
+    .bookdetail:hover .favorite_cart {
+        visibility: visible;
+    }
+
+    .nav_bar ul li a:hover {
+        background-color: black;
+        color: white;
+    }
+
+    .user_right ul li a:hover {
+        background-color: black;
+        color: white;
+    }
+
+
+
+    /*Favorite*/
+    .favorite_list,
+    .cart_list {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .remove_favorite {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .remove_btn {
+        background-color: red;
+        color: white;
+        /* height: 28px; */
+        margin-right: 10px;
+        font-size: 18px;
+        line-height: 18px;
+    }
+
+
+    table {
+        border-collapse: collapse;
+        border: 1px solid black;
+    }
+
+    table img {
+        width: 200px;
+    }
+
+    td {
+        border: 1px solid black;
+        width: 180px;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    table input {
+        font-size: 18px;
+        width: 50px;
+    }
