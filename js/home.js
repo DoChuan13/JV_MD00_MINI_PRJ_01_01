@@ -8,14 +8,14 @@ function BookProduct(id, img, type, name, price, quantity) {
 
 
 let listProductFull = [];
-listProductFull[0] = new BookProduct(1, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book1.jpg', 'Type 1', 'Murdering Last Year', 80);
-listProductFull[1] = new BookProduct(2, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book2.jpg', 'Type 2', 'About The First Night', 70);
-listProductFull[2] = new BookProduct(3, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book3.jpg', 'Type 3', 'Food Poison', 60);
-listProductFull[3] = new BookProduct(4, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book4.jpg', 'Type 4', 'Graphic Design School', 50);
-listProductFull[4] = new BookProduct(5, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book5.jpg', 'Type 5', 'Black Night', 40);
-listProductFull[5] = new BookProduct(6, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book6.jpg', 'Type 6', 'Open The Sky', 50);
-listProductFull[6] = new BookProduct(7, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book7.jpg', 'Type 7', 'The Big Book Of Science', 60);
-listProductFull[7] = new BookProduct(8, '/Java Full Stack/Project/Mini_Project_01/assets/images/book/book8.jpg', 'Type 8', 'The New Science Of Everything', 70);
+listProductFull[0] = new BookProduct(1, './assets/images/book/book1.jpg', 'Type 1', 'Murdering Last Year', 80);
+listProductFull[1] = new BookProduct(2, './assets/images/book/book2.jpg', 'Type 2', 'About The First Night', 70);
+listProductFull[2] = new BookProduct(3, './assets/images/book/book3.jpg', 'Type 3', 'Food Poison', 60);
+listProductFull[3] = new BookProduct(4, './assets/images/book/book4.jpg', 'Type 4', 'Graphic Design School', 50);
+listProductFull[4] = new BookProduct(5, './assets/images/book/book5.jpg', 'Type 5', 'Black Night', 40);
+listProductFull[5] = new BookProduct(6, './assets/images/book/book6.jpg', 'Type 6', 'Open The Sky', 50);
+listProductFull[6] = new BookProduct(7, './assets/images/book/book7.jpg', 'Type 7', 'The Big Book Of Science', 60);
+listProductFull[7] = new BookProduct(8, './assets/images/book/book8.jpg', 'Type 8', 'The New Science Of Everything', 70);
 
 localStorage.setItem('listProduct', JSON.stringify(listProductFull));
 
