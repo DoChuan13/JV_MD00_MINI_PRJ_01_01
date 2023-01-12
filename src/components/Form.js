@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState, useCallback } from "react";
-import { StudentContext } from "../App";
+import React, { useContext, useEffect, useState, memo } from "react";
+import { FormContext } from "../App";
 
 
 function Form() {
-    console.log("Form");
+    console.log("Form Comp");
     const [studentInfo, setStudentInfo] = useState({
         studentId: '',
         studentName: '',
@@ -14,12 +14,13 @@ function Form() {
         studentAddress: '',
     });
     const [currentStudent, setCurrentStudent] = useState({})
+    // console.log(studentInfo);
 
-    let listContext = useContext(StudentContext)
+    let listContext = useContext(FormContext)
 
     const checkValidateCurrentStudent = () => {
         let flag = true;
-        listContext.listAllStudent.forEach((student) => {
+        listContext().listAllStudent.forEach((student) => {
             if (student.studentId == studentInfo.studentId) {
                 flag = false;
             }
@@ -44,15 +45,11 @@ function Form() {
         }
     }
 
-    // useEffect(() => {
-    //     setStudentInfo(listContext.selectedStudent)
-    //     setCurrentStudent(listContext.selectedStudent)
-    // }, [])
 
     useEffect(() => {
-        setStudentInfo(listContext.selectedStudent)
-        setCurrentStudent(listContext.selectedStudent)
-    }, [listContext.selectedStudent])
+        setStudentInfo(listContext().selectedStudent)
+        setCurrentStudent(listContext().selectedStudent)
+    }, [listContext().selectedStudent])
 
 
     const getStudentInfo = (event) => {
@@ -85,7 +82,7 @@ function Form() {
             window.alert("Mã Sinh Viên đã tồn tại, vui lòng thử lại")
             return;
         }
-        listContext.setNewStudent(false, studentInfo)
+        listContext().setNewStudent(false, studentInfo)
     }
 
     const updateCurrentStudent = (event) => {
@@ -102,7 +99,7 @@ function Form() {
             window.alert("Mã Sinh Viên đã tồn tại, vui lòng thử lại")
             return;
         }
-        listContext.updateCurrentStudent(false, studentInfo, currentStudent)
+        listContext().updateCurrentStudent(false, studentInfo, currentStudent)
     }
 
     const hideForm = () => {
@@ -115,20 +112,20 @@ function Form() {
             studentPlaceBirth: '',
             studentAddress: '',
         }
-        listContext.isToggleAction(false, '', newStudent)
+        listContext().isToggleAction(false, '', newStudent)
     }
 
     let elementBtn = '', inputStatus = true;
-    if (listContext.actionName == "CreateStudent") {
+    if (listContext().actionName == "CreateStudent") {
         elementBtn = <button type="submit" className="btn btn-primary me-2" onClick={setNewStudent}> Create</button>
     }
-    else if (listContext.actionName == "UpdateStudent") {
+    else if (listContext().actionName == "UpdateStudent") {
         elementBtn = <button type="submit" className="btn btn-primary me-2" onClick={updateCurrentStudent}> Update</button>
     }
 
 
     //! Input Box Status
-    if (listContext.actionName == '') {
+    if (listContext().actionName == '') {
         inputStatus = true;
     }
     else {
@@ -203,4 +200,4 @@ function Form() {
         </div >
     )
 }
-export default Form
+export default memo(Form)

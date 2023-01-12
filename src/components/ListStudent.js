@@ -1,14 +1,14 @@
-import React, { useContext } from 'react'
+import React, { memo, useContext } from 'react'
 import Student from './Student.js'
-import { StudentContext } from '../App.js'
+import { TableListContext } from '../App.js'
 
 
 function ListStudent() {
-    console.log("List Student");
+    console.log("List Student Comp");
 
-    let listContext = useContext(StudentContext)
+    let listContext = useContext(TableListContext)
 
-    let elementStudent = listContext.listAllStudent.map((student, index) => {
+    let elementStudent = listContext().listAllStudent.map((student, index) => {
         return <Student key={index} stt={index} student={student}></Student>
     })
 
@@ -36,4 +36,4 @@ function ListStudent() {
     )
 }
 
-export default ListStudent
+export default memo(ListStudent)

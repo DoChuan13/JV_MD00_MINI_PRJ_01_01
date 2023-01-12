@@ -5,8 +5,10 @@ import ListStudent from './components/ListStudent.js'
 import Form from './components/Form.js';
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 
-export const ControlContext = createContext()
 export const StudentContext = createContext()
+export const ControlContext = createContext()
+export const TableListContext = createContext()
+export const FormContext = createContext()
 function App() {
   console.log("App Comp");
   const [listAllStudent, setListAllStudent] = useState([])
@@ -81,13 +83,6 @@ function App() {
     setIsSearch(isSearch);
   }, [])
 
-  const controlContextList = useCallback(() => {
-    return {
-      isToggleAction: isToggleAction,
-      findStudent: findStudent,
-      sortStudentOpt: sortStudentOpt
-    }
-  }, [listAllStudent])
 
   if (sortOpt.dir != '') {
     if (sortOpt.dir == 'studentName') {
@@ -122,37 +117,63 @@ function App() {
     studentRender = fillStudentArr;
   }
 
+  //Callback group
+  //Callback for Control component
+  const controlContextList = useCallback(() => {
+    return {
+      isToggleAction: isToggleAction,
+      findStudent: findStudent,
+      sortStudentOpt: sortStudentOpt
+    }
+  }, [listAllStudent])
+
+
+  //Callback for List student 
+  const listStudenContextList = useCallback(() => {
+    return {
+      isToggleAction: isToggleAction,
+      deleteStudent: deleteStudent,
+      listAllStudent: studentRender,
+    }
+  }, [listAllStudent, sortOpt, isSearch])
+
+  //Callback for Form
+  const formContextList = useCallback(() => {
+    return {
+      isToggleAction: isToggleAction,
+      deleteStudent: deleteStudent,
+      listAllStudent: listAllStudent,
+      selectedStudent: selectedStudent
+    }
+  }, [selectedStudent])
+
+  //Finished
+
 
   return (
-    <StudentContext.Provider value={{
-      isToggleAction: isToggleAction,
-      setNewStudent: setNewStudent,
-      updateCurrentStudent: updateCurrentStudent,
-      deleteStudent: deleteStudent,
-      actionName: actionName,
-      listAllStudent: studentRender,
-      selectedStudent: selectedStudent
-    }}>
-      <div className="App">
-        <div className="row">
-          <div className="col-lg-7 grid-margin stretch-card">
-            <div className="card">
-              {/* START CONTROL */}
-              <ControlContext.Provider value={controlContextList}>
-                <Control></Control>
-              </ControlContext.Provider>
-              {/* END CONTROL */}
-              {/* START LIST STUDENT */}
+    <div className="App">
+      <div className="row">
+        <div className="col-lg-7 grid-margin stretch-card">
+          <div className="card">
+            {/* START CONTROL */}
+            <ControlContext.Provider value={controlContextList}>
+              <Control></Control>
+            </ControlContext.Provider>
+            {/* END CONTROL */}
+            {/* START LIST STUDENT */}
+            <TableListContext.Provider value={listStudenContextList}>
               <ListStudent></ListStudent>
-              {/* END LIST STUDENT */}
-            </div>
+            </TableListContext.Provider>
+            {/* END LIST STUDENT */}
           </div>
-          {/* START FORM SINH VIEN */}
-          {elementForm}
-          {/* END FORM SINH VIÊN */}
         </div>
+        {/* START FORM SINH VIEN */}
+        <FormContext.Provider value={formContextList}>
+          {elementForm}
+        </FormContext.Provider>
+        {/* END FORM SINH VIÊN */}
       </div>
-    </StudentContext.Provider>
+    </div>
   );
 }
 

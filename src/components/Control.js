@@ -1,12 +1,11 @@
 import React, { memo, useContext, useState } from "react";
-import { StudentContext, ControlContext } from "../App";
+import { ControlContext } from "../App";
 
 
 function Control(props) {
     console.log("Control comp");
     const [student, setStudent] = useState('');
-    let controlContext = useContext(ControlContext)
-    // let listContext = useContext(StudentContext);
+    let listContext = useContext(ControlContext)
 
     const addNewStudent = () => {
         let newStudent = {
@@ -18,8 +17,7 @@ function Control(props) {
             studentPlaceBirth: '',
             studentAddress: '',
         }
-        // props.isToggleAction(true, "CreateStudent", newStudent);
-        controlContext().isToggleAction(true, "CreateStudent", newStudent);
+        listContext().isToggleAction(true, "CreateStudent", newStudent);
 
     }
 
@@ -30,15 +28,12 @@ function Control(props) {
 
     const findStudent = (event) => {
         event.preventDefault();
-        console.log(student);
-        // props.findStudent(student, true)
-        controlContext().findStudent(student, true)
+        listContext().findStudent(student, true)
     }
 
     const sortStudent = (event) => {
         let sortOption = event.target.value.split('-');
-        // props.sortStudentOpt(sortOption[0], sortOption[1], false)
-        controlContext().sortStudentOpt(sortOption[0], sortOption[1], false)
+        listContext().sortStudentOpt(sortOption[0], sortOption[1], false)
     }
 
     return (

@@ -1,5 +1,5 @@
 import React, { Component, useContext, useEffect, useReducer } from "react";
-import { StudentContext } from "../App";
+import { TableListContext } from "../App";
 
 
 // const ReducerStudent = (state, action) => {
@@ -13,12 +13,12 @@ import { StudentContext } from "../App";
 //     }
 // }
 function Student(props) {
-    console.log("Student");
+    console.log("Student Comp");
 
     // const [status, dispatch] = useReducer(ReducerStudent, { status: '', log: 0 })
 
     let { student } = props;
-    let listContext = useContext(StudentContext)
+    let listContext = useContext(TableListContext)
     // useEffect(() => {
     //     switch (status.status) {
     //         case "view":
@@ -40,11 +40,11 @@ function Student(props) {
     // }, [status])
 
     const viewStudent = () => {
-        listContext.isToggleAction(true, "", student);
+        listContext().isToggleAction(true, "", student);
     }
 
     const editStudent = () => {
-        listContext.isToggleAction(true, "UpdateStudent", student);
+        listContext().isToggleAction(true, "UpdateStudent", student);
     }
 
     const deleteStudent = () => {
@@ -52,7 +52,7 @@ function Student(props) {
         if (!checkconfirm) {
             return;
         }
-        listContext.deleteStudent(student)
+        listContext().deleteStudent(student)
     }
 
     return (
