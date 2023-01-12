@@ -44,10 +44,10 @@ function Form() {
         }
     }
 
-    useEffect(() => {
-        setStudentInfo(listContext.selectedStudent)
-        setCurrentStudent(listContext.selectedStudent)
-    }, [])
+    // useEffect(() => {
+    //     setStudentInfo(listContext.selectedStudent)
+    //     setCurrentStudent(listContext.selectedStudent)
+    // }, [])
 
     useEffect(() => {
         setStudentInfo(listContext.selectedStudent)

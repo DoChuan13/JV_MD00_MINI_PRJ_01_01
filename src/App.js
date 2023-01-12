@@ -5,7 +5,7 @@ import ListStudent from './components/ListStudent.js'
 import Form from './components/Form.js';
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 
-
+export const ControlContext = createContext()
 export const StudentContext = createContext()
 function App() {
   console.log("App Comp");
@@ -81,6 +81,13 @@ function App() {
     setIsSearch(isSearch);
   }, [])
 
+  const controlContextList = useCallback(() => {
+    return {
+      isToggleAction: isToggleAction,
+      findStudent: findStudent,
+      sortStudentOpt: sortStudentOpt
+    }
+  }, [listAllStudent])
 
   if (sortOpt.dir != '') {
     if (sortOpt.dir == 'studentName') {
@@ -131,12 +138,9 @@ function App() {
           <div className="col-lg-7 grid-margin stretch-card">
             <div className="card">
               {/* START CONTROL */}
-              <Control
-                isToggleAction={isToggleAction}
-                findStudent={findStudent}
-                sortStudentOpt={sortStudentOpt}
-              >
-              </Control>
+              <ControlContext.Provider value={controlContextList}>
+                <Control></Control>
+              </ControlContext.Provider>
               {/* END CONTROL */}
               {/* START LIST STUDENT */}
               <ListStudent></ListStudent>
