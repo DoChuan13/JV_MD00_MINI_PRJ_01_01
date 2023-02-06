@@ -69,7 +69,13 @@ function App() {
   }
 
   return (
-    <taskListContext.Provider value={{ taskList: taskList, createNewItem: createNewItem, finishItem: finishItem, deleteItem: deleteItem, editItem: editItem }}>
+    <taskListContext.Provider value={{
+      taskList: taskList,
+      createNewItem: createNewItem,
+      finishItem: finishItem,
+      deleteItem: deleteItem,
+      editItem: editItem
+    }}>
       <div className="App">
         <>
           <div id="myDIV" className="header">
